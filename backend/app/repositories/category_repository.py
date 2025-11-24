@@ -12,7 +12,7 @@ class CategoryRepository:
 
 
     def get_all(self) -> List[Category]:
-        return self.db.query(Category).get_all()
+        return self.db.query(Category).all()
     
 
     def get_by_id(self,category_id: int) -> Optional[Category]:
