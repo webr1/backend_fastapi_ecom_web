@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 from typing import List, Optional
 from ..models import Category
-from ..schemas import CategoryCareate
+from ..schemas import CategoryCreate
 
 
 
@@ -22,7 +22,7 @@ class CategoryRepository:
     def get_by_slug(self,slug:str) -> Optional[Category]:
         return  self.db.query(Category).filter(Category.slug == slug).first()
     
-    def create(self,category_data:CategoryCareate) -> Category:
+    def create(self,category_data:CategoryCreate) -> Category:
         db_category = Category(**category_data.model_dump())
         self.db.add(db_category)
         self.commit()

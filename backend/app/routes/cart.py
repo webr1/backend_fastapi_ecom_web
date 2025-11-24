@@ -2,7 +2,7 @@ from fastapi import APIRouter,Depends,status
 from sqlalchemy.orm import Session
 from typing import List,Dict
 from ..database import get_db
-from services.cart_service import CartService
+from ..services.cart_service import CartService
 from  ..schemas.cart import CartItemCreate,CartItemUpdate,CartResponse
 from pydantic import BaseModel
 
@@ -42,7 +42,7 @@ def add_to_cart(cart_data:Dict[int,int],db:Session=Depends(get_db)):
 
 
 
-@round.put("/update",status_code=status.HTTP_200_OK)
+@router.put("/update",status_code=status.HTTP_200_OK)
 def update_cart_item(request:UpdateCartRequest,db:Session=Depends(get_db)):
     service = CartService(db)
     item = CartItemUpdate(product_id=request.product_id,quantity=request.quantity)

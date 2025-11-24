@@ -4,7 +4,7 @@ from pydantic import BaseModel,Field
 
 
 class CategoryBase(BaseModel):
-    name: str = Field(..., max_length=5,max_length=150,description="Введити название")
+    name: str = Field(..., min_length=5,max_length=150,description="Введити название")
     slug: str = Field(..., min_length=5,max_length=100,description="URL-frendly category name")
 
 

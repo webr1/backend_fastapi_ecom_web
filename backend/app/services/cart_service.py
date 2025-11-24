@@ -1,13 +1,13 @@
 from sqlalchemy.orm import Session
 from typing import List,Dict
-from ..repositories.product_repository import ProducRespository
+from ..repositories.product_repository import ProductRepository
 from ..schemas.cart import CartResponse, CartItemUpdate,CartItem,CartItemCreate
 from fastapi import HTTPException,status
 
 
 class CartService:
     def __init__(self,db:Session):
-        self.product_repository = ProducRespository(db)
+        self.product_repository = ProductRepository(db)
 
         def add_to_cart(self,cart_data: Dict[int,int], item:CartItemCreate) -> Dict[int,int]:
             product = self.product_repository.get_by_id(item.product_id)
